@@ -14,7 +14,14 @@ module.exports = () =>
       filename: `${fileName}.js`,
     },
     devServer: {
+      historyApiFallback: true,
       port: 3000,
+      client: {
+        overlay: {
+          errors: true,
+          warnings: true,
+        },
+      },
     },
     devtool: 'source-map',
     optimization: {

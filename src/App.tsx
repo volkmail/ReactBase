@@ -1,5 +1,7 @@
-import React from 'react';
+import styles from './App.module.scss';
 
-const App: React.FC<Record<string, unknown>> = () => <div>BASE REACT APP</div>;
+const App: React.FC<Record<string, unknown>> = () => (
+  <div className={styles.home}>REACT BASE APP</div>
+);
 
-export default App;
+export { App };

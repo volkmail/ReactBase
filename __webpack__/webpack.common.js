@@ -11,11 +11,16 @@ module.exports = {
   output: {
     path: `${ROOT_DIR}/build`,
     clean: true,
+    assetModuleFilename: 'assets/[name][ext]',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json', '...'],
     alias: {
-      '@src': `${ROOT_DIR}/src`,
+      'src': `${ROOT_DIR}/src`,
+      'api': `${ROOT_DIR}/src/api`,
+      'components': `${ROOT_DIR}/src/components`,
+      'pages': `${ROOT_DIR}/src/pages`,
+      'assets': `${ROOT_DIR}/src/assets`,
     },
   },
   optimization: {
@@ -37,9 +42,37 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /\.(s?)css$/,
+        oneOf: [
+          {
+            test: /\.module\.(s?)css$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: {
+                    localIdentName: '[name]__[local]__[hash:base64:5]',
+                  },
+                },
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true,
+                },
+              },
+            ],
+          },
+          {
+            use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          },
+        ],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|jpg|gif|bmp)$/i,
+        type: 'asset/resource',
       },
     ],
   },
