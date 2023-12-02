@@ -55,5 +55,11 @@
                 "tsx": "never"
             }
         ]
-    }
+    },
+    "overrides": [{
+        "files": ["./__webpack__/**"],
+        "rules": {
+            "@typescript-eslint/no-var-requires": "off"
+        }
+    }]
 }
