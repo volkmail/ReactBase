@@ -8,8 +8,8 @@
         "lint": "eslint src/**/*.ts{,x}",
         "lint:quite": "eslint --quiet src/**/*.ts{,x}",
         "lint:fix": "eslint --fix src/**/*.ts{,x}",
-        "dev": "webpack serve --config ./webpack/webpack.dev.js",
-        "build": "webpack --progress --config ./webpack/webpack.build.js"
+        "dev": "webpack serve --config ./__webpack__/webpack.dev.js",
+        "build": "webpack --progress --config ./__webpack__/webpack.build.js"
     },
     "author": "Aleksei Volkov",
     "license": "MIT",

@@ -2,8 +2,14 @@
     "root": true,
     "env": {
         "browser": true,
-        "node": true,
-        "commonjs": true
+        "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
     "settings": {
         "react": {
@@ -15,41 +21,30 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:import/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
+        "plugin:react/jsx-runtime",
         "prettier"
     ],
     "plugins": [
+        "prettier",
         "@typescript-eslint",
         "react",
         "react-hooks",
-        "prettier"
-    ],
-    "overrides": [
-        {
-            "files": [
-                "*.ts",
-                "*.tsx"
-            ],
-            "extends": [
-                "plugin:@typescript-eslint/recommended",
-                "plugin:import/typescript"
-            ],
-            "parser": "@typescript-eslint/parser",
-            "parserOptions": {
-                "project": [
-                    "./tsconfig.json"
-                ]
-            }
-        }
+        "import"
     ],
     "rules": {
         "prettier/prettier": "error",
         "no-duplicate-imports": "error",
         "default-param-last": "error",
         "react/jsx-props-no-spreading": "warn",
+        "react/prop-types": "off",
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off",
         "import/no-unresolved": "error",
+        "no-param-reassign": "warn",
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -58,20 +53,6 @@
                 "jsx": "never",
                 "ts": "never",
                 "tsx": "never"
-            }
-        ],
-        "@typescript-eslint/no-non-null-assertion": "off",
-        "@typescript-eslint/ban-ts-comment": "off",
-        "@typescript-eslint/no-explicit-any": "warn",
-        "@typescript-eslint/no-var-requires": "off",
-        "@typescript-eslint/no-unused-vars": "warn",
-        "@typescript-eslint/no-shadow": [
-            "error",
-            {
-                "builtinGlobals": true,
-                "hoist": "all",
-                "allow": [],
-                "ignoreOnInitialization": false
             }
         ]
     }
