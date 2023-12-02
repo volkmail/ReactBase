@@ -61,5 +61,10 @@
         "rules": {
             "@typescript-eslint/no-var-requires": "off"
         }
+    },{
+        "files": ["./src/globals.d.ts"],
+        "rules": {
+            "@typescript-eslint/no-explicit-any": "off"
+        }
     }]
 }
